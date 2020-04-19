@@ -1,34 +1,29 @@
-<?php include_once('lib/header.php');
-      require_once('functions/alert.php');
-      require_once('functions/redirect.php');
-
+<?php include_once('header.php');
+require_once('../functions/alert.php');
+     
 
 if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
     // redirect to dashboard
-    if ($_SESSION['role'] == "Medical Team") {
-        redirect_to('medicaldashboard.php');
-    }else{
-        redirect_to('patientdashboard.php');
-    }
-    
+    header("Location: admindashboard.php");
 }
 
 ?>
-
-
-    <div class="container border shadow-sm" style="background-color: silver;">
-    <div class="row">
+<div class="container"  style="background-color: white;">
+    <div class="row col-6">
         <h3>Login</h3>
     </div>
-    <div class="row">
+    <div class="row col-6">
+        <h3>Login</h3>
+    </div>
     <p>
         <?php  print_alert(); ?>
         </p>
-    </div>
-    <div class="row">
+    <div class="row col-6">
         
         <form method="POST" action="processlogin.php">
-         <p>
+    
+                
+            <p>
                 <label>Email</label><br />
                 <input
                 
@@ -50,16 +45,8 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
             <p>
                 <button class="btn btn-sm btn-primary" type="submit">Login</button>
             </p>
-            <p>
-                <a href="forgot.php">Forgot password</a>
-            </p>
-            <p>
-                <a href="register.php">Don't have an account? Register</a>
-            </p>
+            
         </form>
     </div>
-
-   
-    
 </div>
-<?php include_once('lib/footer.php'); ?>
+<?php include_once('footer.php'); ?>
