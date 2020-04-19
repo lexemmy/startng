@@ -1,6 +1,10 @@
 # startng
+
 start.ng
+
 ADMIN LOGIN DETAILS
+
+Localhost/start.ng/admin
 
 Email : admin@admin.com
 
@@ -8,11 +12,17 @@ password : 1234
 
 *******************************************
 
-SAMPLE USER DETAILS
+SAMPLE PATIENT LOGIN DETAILS
 
-Email : test@test.com
+Email : patient@admin.com
 
 password : 1234
+
+SAMPLE MEDICAL TEAM LOGIN DETAILS
+
+Email : medical@admin.com
+
+Password : 1234
 
 *********************************************
 
