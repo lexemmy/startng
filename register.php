@@ -1,11 +1,15 @@
 <?php include_once('lib/header.php');
-require_once('functions/alert.php');
- 
+      require_once('functions/alert.php');
+      require_once('functions/redirect.php');
+
 if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
     // redirect to dashboard
-    header("Location: dashboard.php");
+    if ($_SESSION['role'] == "Medical Team") {
+        redirect_to('medicaldashboard.php');
+    }else{
+        redirect_to('patientdashboard.php');
+    }
 }
-// include_once('lib/header.php');
 
 ?>
 <div class="container">
@@ -29,13 +33,11 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
         
             <p>
                 <label>First Name</label>
-                <input  
-                <?php              
+                <input  <?php              
                     if(isset($_SESSION['first_name'])){
                         echo "value=" . $_SESSION['first_name'];                                                             
-                    }                
-                ?>
-                type="text" class="form-control" name="first_name" placeholder="First Name" />
+                    }               
+                ?> type="text" class="form-control" name="first_name" placeholder="First Name" />
 
             </p>
             <p>
@@ -99,39 +101,66 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
                     
                     <option 
                     <?php              
-                        if(isset($_SESSION['designation']) && $_SESSION['designation'] == 'Mentor'){
+                        if(isset($_SESSION['designation']) && $_SESSION['designation'] == 'Medical Team'){
                             echo "selected";                                                           
                         }                
                     ?>
-                    >Mentor</option>
+                    >Medical Team</option>
                     <option 
                     <?php              
-                        if(isset($_SESSION['designation']) && $_SESSION['designation'] == 'rep'){
+                        if(isset($_SESSION['designation']) && $_SESSION['designation'] == 'Patient'){
                             echo "selected";                                                           
                         }                
                     ?>
-                    >Rep</option>
-                     <option 
-                    <?php              
-                        if(isset($_SESSION['designation']) && $_SESSION['designation'] == 'Student'){
-                            echo "selected";                                                           
-                        }                
-                    ?>
-                    >Student</option>
+                    >Patient</option>
+                     
                 </select>
 
 
             </p>
             <p>
-                <label class="label" for="track">Track</label><br />
-                <input
+                <label class="label" for="department">Department</label><br />
+                <select class="form-control" name="department" >
+                
+                    
+                <option 
                 <?php              
-                    if(isset($_SESSION['track'])){
-                        echo "value=" . $_SESSION['track'];                                                             
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'General suregery'){
+                        echo "selected";                                                           
                     }                
                 ?>
-                type="text" id="track" class="form-control" name="track" placeholder="Track"  />
-            
+                >General surgery</option>
+                <option 
+                <?php              
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'Cardiology'){
+                        echo "selected";                                                           
+                    }                
+                ?>
+                >Cardiology</option>
+                <option 
+                <?php              
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'Physiotherapy'){
+                        echo "selected";                                                           
+                    }                
+                ?>
+                >Physiotherapy</option>
+                <option 
+                <?php              
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'Gynecology'){
+                        echo "selected";                                                           
+                    }                
+                ?>
+                >Gynecology</option>
+                <option 
+                <?php              
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'Neurology'){
+                        echo "selected";                                                           
+                    }                
+                ?>
+                >Neurology</option>
+                 
+            </select>
+
             </p>
             <p>
                 <button class="btn btn-sm btn-success" type="submit">Register</button>
