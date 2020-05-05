@@ -4,36 +4,11 @@ require_once('functions/alert.php');
 require_once('functions/redirect.php');
 require_once('functions/user.php');
 
+
 $errorCount = 0;
 
 $email = $_POST['email'] != "" ? $_POST['email'] :  $errorCount++;
 $password = $_POST['password'] != "" ? $_POST['password'] :  $errorCount++;
-
-
-if ($email == "admin@admin.com") {
-  
-
-    $userString = file_get_contents("db/admin/admin@admin.com.json");
-
-    $userObject = json_decode($userString);
-    $passwordFromDB = $userObject->password;
-
-    if (password_verify($password, $passwordFromDB)) {
-
-         $_SESSION['fullname'] = $userObject->first_name;
-         $_SESSION['loggedIn'] = $userObject->id;
-
-        redirect_to("admindashboard.php");
-    
-    }
-
-
-    
-
-
-
-
-} else{
 
 
 
@@ -65,19 +40,25 @@ if($errorCount > 0){
 
             $passwordFromUser = password_verify($password, $passwordFromDB);
             
+            //check if password match
             if($passwordFromDB == $passwordFromUser){
-                //redicrect to dashboard
+                //set sessions and redicrect to dashboard
                 $_SESSION['logindate'] = $userObject->logindate;
                 $_SESSION['date'] = $userObject->date;
                 $_SESSION['loggedIn'] = $userObject->id; 
                 $_SESSION['email'] = $userObject->email;
                 $_SESSION['fullname'] = $userObject->first_name . " " . $userObject->last_name;
                 $_SESSION['role'] = $userObject->designation;
-                $_SESSION['track'] = $userObject->track;
-                
-                redirect_to("dashboard.php");
+                $_SESSION['department'] = $userObject->department;
+                $_SESSION['logintime'] = date("y/m/d h:i:s A");
+                $_SESSION['userObject'] = json_encode($userObject);
 
-
+                if ($_SESSION['role'] == "Medical Team") {
+                    redirect_to("medicaldashboard.php");
+                }
+                else{
+                    redirect_to("patientdashboard.php");
+                }
                 die();
             }
           
@@ -88,5 +69,4 @@ if($errorCount > 0){
     redirect_to("login.php");
     die();
 
-}
 }

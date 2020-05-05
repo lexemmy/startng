@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to SNG Academy</title>
+    <title>Welcome to SNG Hospital</title>
 
-    <link rel="stylesheet" href="css/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.css">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles2.css">
     <script src="js/scripts.js"></script>
 </head>
 <body style="background-color: #d8d8d8;">
@@ -20,10 +20,10 @@
         
                 <a class="p-2 text-light" href="login.php">Login</a> 
                 <a class="p-2 text-light" href="register.php">Register</a> 
-                <!-- <a class="p-2 text-dark" href="forgot.php">Forgot Password</a> -->
+                
             <?php }else{ ?>
                 
-                <a class="p-2 text-light" href="dashboard.php">Dashboard</a>  
+                <a class="p-2 text-light" href="reset.php">Reset password</a>  
                 <a class="p-2 text-light" href="logout.php">Logout</a>
             <?php } ?>
           
