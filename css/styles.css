@@ -4,6 +4,10 @@
     /* background-color: red; */
 }
 
+body {
+
+    background-color: red;
+  }
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -20,6 +24,7 @@
   }
 
   html {
+
     font-size: 14px;
   }
   @media (min-width: 768px) {
@@ -39,27 +44,8 @@
   .card-deck .card {
     min-width: 220px;
   }
+  .head{
+    background-color: red;
+  }
 
-#alert{
-  line-height: 20px;
-padding: 20;
-background-color:#00c851;
-color: white;
-margin-bottom: 15px;
-}
-
-.closebtn{
   
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.closebtn:hover{
-  color: black;
-}
